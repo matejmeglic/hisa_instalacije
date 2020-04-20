@@ -26,6 +26,7 @@ img { max-width: 100%; display: block }
   font-size: 17px;
   text-transform: uppercase;
   color: #fff;
+  display: inline;
 }
 img {
   display: block;
@@ -34,9 +35,12 @@ img {
 .cbTypes {
   margin-left: 30px;
 }
+
 .cbTypes label {
   margin-right: 10px;
   color: #61dafb;
+  display: inline-block;
+
 }
 .appWrap nav button.active {
   border-bottom: 4px solid #61dafb;
@@ -84,6 +88,7 @@ img {
 
 input[type="checkbox"] {
   display: inline-block;
+  align-items: center;
   width: 15px;
   vertical-align: baseline;
 }
