@@ -3,7 +3,7 @@ import "./App.css";
 
 const tipi = [
   {
-    label: "Vticnice",
+    label: "Vtičnice",
     value: "vticnice",
   },
   {
@@ -30,7 +30,7 @@ const tipi = [
 
 const floors = [
   {
-    label: "Pritlicje",
+    label: "Pritličje",
     value: "prit",
   },
   {
