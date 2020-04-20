@@ -25,6 +25,10 @@ body, html {
   text-transform: uppercase;
   color: #fff;
 }
+img {
+  display: block;
+  max-width: 100%;
+}
 .cbTypes {
   margin-left: 30px;
 }
