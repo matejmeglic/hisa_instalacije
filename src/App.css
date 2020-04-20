@@ -1,10 +1,64 @@
-.App {
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-header {
+.appWrap {
+  display: flex;
+  flex-direction: column;
+}
+.appWrap nav {
   background-color: #282c34;
+  display: flex;
+  padding: 10px 30px;
+  align-items: center;
+  justify-content: center;
+}
+.appWrap nav button {
+  background: none;
+  border: 0;
+  padding: 10px;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #fff;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.cbTypes {
+  margin-left: 30px;
+}
+.cbTypes label {
+  margin-right: 10px;
+  color: #61dafb;
+}
+.appWrap nav button.active {
+  border-bottom: 4px solid #61dafb;
+}
+.appWrap > main {
+  flex: 1;
+  overflow: auto;
+}
+.blueprint {
+  position: relative;
+  margin: 0 auto;
+  display: inline-block;
+}
+.imgOverlays {
+  left: 0;
+  top: 0;
+}
+.imgOverlays img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.App-header {
   min-height: 7vh;
   display: flex;
   flex-direction: row;
