@@ -15,7 +15,7 @@ const tipi = [
     value: "napisi",
   },
   {
-    label: "LAN",
+    label: "Internet",
     value: "lan",
   },
   {
@@ -39,11 +39,13 @@ const floors = [
   },
 ];
 export default function App() {
+  
   const [activeFloor, setFloor] = useState(floors[0].value);
   const [activeTypes, setTypes] = useState([]);
   return (
     <div className="appWrap">
       <nav>
+
         {floors.map(({ value, label }) => {
           return (
             <button
@@ -51,13 +53,14 @@ export default function App() {
               onClick={() => {
                 setFloor(value);
                 // this resets all checkboxes
-                setTypes([])
+                //setTypes([])
               }}
             >
               {label}
             </button>
           );
         })}
+
         <span className="cbTypes">
           {tipi.map(({ value, label }) => {
             return (
@@ -79,6 +82,8 @@ export default function App() {
           })}
         </span>
       </nav>
+
+
       <main>
         <div className="blueprint">
           <img src={`/static/img/tloris_${activeFloor}.jpg`} />
