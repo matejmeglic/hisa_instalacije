@@ -42,6 +42,10 @@ export default function App() {
   
   const [activeFloor, setFloor] = useState(floors[0].value);
   const [activeTypes, setTypes] = useState([]);
+ 
+
+
+ 
   return (
     <div className="appWrap">
       <nav>
@@ -69,12 +73,30 @@ export default function App() {
                   type="checkbox"
                   checked={activeTypes.includes(value)}
                   onChange={() => {
-                    setTypes(
+                    
+                    setTypes(                
+                      activeTypes.includes("diff") === true &&
+                      activeTypes.includes("stikala") === false &&
+                      activeTypes.includes("vticnice") === false
+                      ? activeTypes.includes(value)
+                      ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value)
+                      :activeTypes.concat(value).filter((t) => t !== "diff")
+                      :
                       activeTypes.includes(value)
-                        ? activeTypes.filter((t) => t !== value)
-                        : [...activeTypes, value]
-                    );
-                  }}
+                      ? activeTypes.filter((t) => t !== value)
+                      : value === "stikala"?["diff",...activeTypes, value,"napisi"]:
+                      [...activeTypes, value] 
+                      );
+                
+                    
+
+
+                    }
+                      
+                      
+                    
+                      
+                  }
                 />
                 {label}
               </label>
