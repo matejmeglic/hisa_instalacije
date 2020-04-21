@@ -75,16 +75,28 @@ export default function App() {
                   onChange={() => {
                     
                     setTypes(                
+                      value === "vticnice" &&
+                      activeTypes.includes(value) === true &&
+                      activeTypes.includes("diff") === true 
+                      ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value)
+                      : 
+                      value === "stikala" &&
+                      activeTypes.includes(value) === true &&
+                      activeTypes.includes("diff") === true &&
+                      activeTypes.includes("napisi") === true
+                      ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value).filter((t) => t !== "napisi")
+                      : 
                       activeTypes.includes("diff") === true &&
                       activeTypes.includes("stikala") === false &&
                       activeTypes.includes("vticnice") === false
                       ? activeTypes.includes(value)
                       ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value)
-                      :activeTypes.concat(value).filter((t) => t !== "diff")
-                      :
-                      activeTypes.includes(value)
+                      : activeTypes.concat(value).filter((t) => t !== "diff")
+                      
+                      : activeTypes.includes(value)
                       ? activeTypes.filter((t) => t !== value)
-                      : value === "stikala"?["diff",...activeTypes, value,"napisi"]:
+                      : value === "stikala" ? ["diff",...activeTypes, value,"napisi"]
+                      : value === "vticnice" ? ["diff",...activeTypes, value]:
                       [...activeTypes, value] 
                       );
                 
