@@ -5,26 +5,32 @@ const tipi = [
   {
     label: "Vtičnice",
     value: "vticnice",
+    deps: "",
   },
   {
     label: "Stikala",
     value: "stikala",
+    deps: "napisi",
   },
   {
     label: "Napisi",
     value: "napisi",
+    deps: "",
   },
   {
     label: "Internet",
     value: "lan",
+    deps: "",
   },
   {
     label: "Svetila",
     value: "luci",
+    deps: "",
   },
   {
     label: "Kanaleta",
     value: "kanaleta",
+    deps: "",
   },
 ];
 
@@ -42,9 +48,7 @@ export default function App() {
   
   const [activeFloor, setFloor] = useState(floors[0].value);
   const [activeTypes, setTypes] = useState([]);
- 
-
-
+  const [activeChecked, setChecked] = useState([]);
  
   return (
     <div className="appWrap">
@@ -52,7 +56,7 @@ export default function App() {
 
         {floors.map(({ value, label }) => {
           return (
-            <button
+            <button key={value}
               className={value === activeFloor ? "active" : ""}
               onClick={() => {
                 setFloor(value);
@@ -66,49 +70,28 @@ export default function App() {
         })}
 
         <span className="cbTypes">
-          {tipi.map(({ value, label }) => {
+          {tipi.map(({ value, label, deps}) => {
             return (
-              <label>
+              <label key={value}>
                 <input
                   type="checkbox"
-                  checked={activeTypes.includes(value)}
+                  checked={activeChecked.includes(value)}
                   onChange={() => {
-                    
-                    setTypes(                
-                      value === "vticnice" &&
-                      activeTypes.includes(value) === true &&
-                      activeTypes.includes("diff") === true 
-                      ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value)
-                      : 
-                      value === "stikala" &&
-                      activeTypes.includes(value) === true &&
-                      activeTypes.includes("diff") === true &&
-                      activeTypes.includes("napisi") === true
-                      ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value).filter((t) => t !== "napisi")
-                      : 
-                      activeTypes.includes("diff") === true &&
-                      activeTypes.includes("stikala") === false &&
-                      activeTypes.includes("vticnice") === false
-                      ? activeTypes.includes(value)
-                      ? activeTypes.filter((t) => t !== "diff").filter((t) => t !== value)
-                      : activeTypes.concat(value).filter((t) => t !== "diff")
-                      
-                      : activeTypes.includes(value)
-                      ? activeTypes.filter((t) => t !== value)
-                      : value === "stikala" ? ["diff",...activeTypes, value,"napisi"]
-                      : value === "vticnice" ? ["diff",...activeTypes, value]:
-                      [...activeTypes, value] 
-                      );
-                
-                    
+                    setChecked( // preveri checkboxe
+                      activeChecked.includes(value)
+                     ? activeChecked.filter((t) => t !== value)
+                     : [...activeChecked, value, deps].filter((t)=> t!=="")
+                   );
+                   setTypes( // izpis value+deps
+                    activeChecked.includes(value)
+                    ?  activeTypes.filter((t) => t !== value)
+                    :  [deps,...activeTypes,value].filter((t)=> t!=="")
+                  );
 
-
-                    }
+                   
                       
-                      
-                    
-                      
-                  }
+   
+                  }}
                 />
                 {label}
               </label>
