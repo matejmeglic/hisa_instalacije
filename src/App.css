@@ -61,6 +61,12 @@ img { max-width: 100%; display: block }
   top: 0;
 }
 
+.background {
+}
+
+
+
+
 .App-header {
   min-height: 7vh;
   display: flex;
@@ -130,4 +136,5 @@ a {
 /*  width: 1012px;
   height: 813px; */
 }
+
 
