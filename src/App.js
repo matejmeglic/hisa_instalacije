@@ -5,7 +5,7 @@ const tipi = [
   {
     label: "Vtičnice",
     value: "vticnice",
-    deps: "",
+    deps: "elektrika",
   },
   {
     label: "Stikala",
@@ -30,6 +30,36 @@ const tipi = [
   {
     label: "Kanaleta",
     value: "kanaleta",
+    deps: "",
+  },
+  {
+    label: "Streha",
+    value: "streha",
+    deps: "nadstresek",
+  },
+  {
+    label: "Nadstrešek",
+    value: "nadstresek",
+    deps: "",
+  },
+  {
+    label: "Kamere",
+    value: "kamere",
+    deps: "",
+  },
+  {
+    label: "Cevi",
+    value: "cevi",
+    deps: "elektrika",
+  },
+  {
+    label: "Elektrika zunaj",
+    value: "elektrika",
+    deps: "",
+  },
+  {
+    label: "Voda zunaj",
+    value: "voda",
     deps: "",
   },
 ];
