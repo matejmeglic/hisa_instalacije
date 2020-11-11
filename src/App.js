@@ -133,9 +133,9 @@ export default function App() {
 
       <main>
         <div className="blueprint">
-          <img className="background" src={`/static/img/tloris_${activeFloor}.jpg`} />
+          <img className="background" alt="background" src={`/static/img/tloris_${activeFloor}.jpg`} />
           <div className="imgOverlays">
-            {activeTypes.map(val => <img src={`/static/img/${activeFloor}_${val}.png`} />)}
+            {activeTypes.map(val => <img alt="overlay" src={`/static/img/${activeFloor}_${val}.png`} />)}
           </div>
         </div>
       </main>
