@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import "./App.css";
 
 const tipi = [
@@ -28,8 +28,8 @@ const tipi = [
     deps: "",
   },
   {
-    label: "Kanaleta",
-    value: "kanaleta",
+    label: "LED",
+    value: "led",
     deps: "",
   },
   {
@@ -40,6 +40,11 @@ const tipi = [
   {
     label: "Nadstrešek",
     value: "nadstresek",
+    deps: "",
+  },
+  {
+    label: "Meteo",
+    value: "meteo",
     deps: "",
   },
   {
@@ -75,18 +80,17 @@ const floors = [
   },
 ];
 export default function App() {
-  
   const [activeFloor, setFloor] = useState(floors[0].value);
   const [activeTypes, setTypes] = useState([]);
   const [activeChecked, setChecked] = useState([]);
- 
+
   return (
     <div className="appWrap">
       <nav>
-
         {floors.map(({ value, label }) => {
           return (
-            <button key={value}
+            <button
+              key={value}
               className={value === activeFloor ? "active" : ""}
               onClick={() => {
                 setFloor(value);
@@ -100,27 +104,27 @@ export default function App() {
         })}
 
         <span className="cbTypes">
-          {tipi.map(({ value, label, deps}) => {
+          {tipi.map(({ value, label, deps }) => {
             return (
               <label key={value}>
                 <input
                   type="checkbox"
                   checked={activeChecked.includes(value)}
                   onChange={() => {
-                    setChecked( // preveri checkboxe
+                    setChecked(
+                      // preveri checkboxe
                       activeChecked.includes(value)
-                     ? activeChecked.filter((t) => t !== value)
-                     : [...activeChecked, value, deps].filter((t)=> t!=="")
-                   );
-                   setTypes( // izpis value+deps
-                    activeChecked.includes(value)
-                    ?  activeTypes.filter((t) => t !== value)
-                    :  [deps,...activeTypes,value].filter((t)=> t!=="")
-                  );
-
-                   
-                      
-   
+                        ? activeChecked.filter((t) => t !== value)
+                        : [...activeChecked, value, deps].filter(
+                            (t) => t !== ""
+                          )
+                    );
+                    setTypes(
+                      // izpis value+deps
+                      activeChecked.includes(value)
+                        ? activeTypes.filter((t) => t !== value)
+                        : [deps, ...activeTypes, value].filter((t) => t !== "")
+                    );
                   }}
                 />
                 {label}
@@ -130,12 +134,20 @@ export default function App() {
         </span>
       </nav>
 
-
       <main>
         <div className="blueprint">
-          <img className="background" alt="background" src={`/static/img/tloris_${activeFloor}.jpg`} />
+          <img
+            className="background"
+            alt="background"
+            src={`/static/img/tloris_${activeFloor}.jpg`}
+          />
           <div className="imgOverlays">
-            {activeTypes.map(val => <img alt="overlay" src={`/static/img/${activeFloor}_${val}.png`} />)}
+            {activeTypes.map((val) => (
+              <img
+                alt="overlay"
+                src={`/static/img/${activeFloor}_${val}.png`}
+              />
+            ))}
           </div>
         </div>
       </main>
